@@ -1,0 +1,15 @@
+version: '3.9'
+
+services: 
+  app:
+    build:
+      context: .
+    environment:
+      # required
+      NEW_RELIC_LICENSE_KEY: $NEW_RELIC_LICENSE_KEY
+      # optional
+      NEW_RELIC_HOST: ${NEW_RELIC_HOST:-}
+    ports:
+      - 127.0.0.1:9222:9222
+    volumes:
+      - "./logs:/app/logs"
