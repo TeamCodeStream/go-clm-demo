@@ -3,7 +3,7 @@ WORKDIR /app
 COPY server ./server
 COPY go.mod go.sum ./
 RUN go get github.com/newrelic/go-agent/v3/newrelic@develop
-RUN go build server/main.go
+RUN go build server/*
 
 FROM alpine
 
