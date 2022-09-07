@@ -2,7 +2,7 @@ module server
 
 go 1.18
 
-require github.com/newrelic/go-agent/v3 v3.17.1-0.20220728183134-c9d5980cc042
+require github.com/newrelic/go-agent/v3 v3.17.1-0.20220818184254-14d45d8ac3c9
 
 require (
 	github.com/golang/protobuf v1.4.3 // indirect

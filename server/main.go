@@ -16,9 +16,9 @@ import (
 	"github.com/newrelic/go-agent/v3/newrelic"
 )
 
-func index(w http.ResponseWriter, r *http.Request) {
-	io.WriteString(w, "hello world")
-}
+//func index(w http.ResponseWriter, r *http.Request) {
+//	io.WriteString(w, "hello world")
+//}
 
 func versionHandler(w http.ResponseWriter, r *http.Request) {
 	io.WriteString(w, "New Relic Go Agent Version: "+newrelic.Version)
@@ -206,14 +206,13 @@ func main() {
 		newrelic.ConfigDebugLogger(os.Stdout),
 		newrelic.ConfigAppLogForwardingEnabled(true),
 		newrelic.ConfigCodeLevelMetricsEnabled(true),
-		newrelic.ConfigCodeLevelMetricsPathPrefix("go-agent/v3"),
 	)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
 
-	http.HandleFunc(newrelic.WrapHandleFunc(app, "/", index))
+	//http.HandleFunc(newrelic.WrapHandleFunc(app, "/", index))
 	http.HandleFunc(newrelic.WrapHandleFunc(app, "/version", versionHandler))
 	http.HandleFunc(newrelic.WrapHandleFunc(app, "/notice_error", noticeError))
 	http.HandleFunc(newrelic.WrapHandleFunc(app, "/notice_error_with_attributes", noticeErrorWithAttributes))

@@ -41,6 +41,8 @@ github.com/newrelic/go-agent/v3 v3.17.0 h1:FLhxjckKKoJWB2rR14oNm+mYZLpktfEy+JKRS
 github.com/newrelic/go-agent/v3 v3.17.0/go.mod h1:BFJOlbZWRlPTXKYIC1TTTtQKTnYntEJaU0VU507hDc0=
 github.com/newrelic/go-agent/v3 v3.17.1-0.20220728183134-c9d5980cc042 h1:4oxBGDVq7JZS0Gk7YVpPLX+yxUNF+cM91GQT+Kh+u5k=
 github.com/newrelic/go-agent/v3 v3.17.1-0.20220728183134-c9d5980cc042/go.mod h1:BFJOlbZWRlPTXKYIC1TTTtQKTnYntEJaU0VU507hDc0=
+github.com/newrelic/go-agent/v3 v3.17.1-0.20220818184254-14d45d8ac3c9 h1:UXWpcds50DlZz1yUaLyMde36VMQDQvzM8cq9OBk/Nn0=
+github.com/newrelic/go-agent/v3 v3.17.1-0.20220818184254-14d45d8ac3c9/go.mod h1:BFJOlbZWRlPTXKYIC1TTTtQKTnYntEJaU0VU507hDc0=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/prometheus/client_model v0.0.0-20190812154241-14fe0d1b01d4/go.mod h1:xMI15A0UPsDsEKsMN9yxemIoYk6Tm2C1GtYGdfGttqA=
 github.com/rogpeppe/fastuuid v1.2.0/go.mod h1:jVj6XXZzXRy/MSR5jhDC/2q6DgLz+nrA6LYCDYWNEvQ=
