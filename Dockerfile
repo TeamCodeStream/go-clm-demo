@@ -2,8 +2,8 @@ FROM golang:1.18.4-alpine as build
 WORKDIR /app
 COPY server ./server
 COPY go.mod go.sum ./
-RUN go get github.com/newrelic/go-agent/v3/newrelic@develop
-RUN go build server/*
+RUN go get github.com/newrelic/go-agent/v3/newrelic
+RUN go build server/*.go
 
 FROM alpine
 

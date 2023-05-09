@@ -10,6 +10,9 @@ import (
 	"math/rand"
 	"net/http"
 	"os"
+	"server/server/controller"
+	"strconv"
+	"strings"
 	"sync"
 	"time"
 
@@ -38,6 +41,7 @@ func noticeErrorWithAttributes(w http.ResponseWriter, r *http.Request) {
 	txn.NoticeError(newrelic.Error{
 		Message: "uh oh. something went very wrong",
 		Class:   "errors are aggregated by class",
+		Stack:   newrelic.NewStackTrace(),
 		Attributes: map[string]interface{}{
 			"important_number": 97232,
 			"relevant_string":  "zap",
@@ -181,12 +185,21 @@ func customMetric(w http.ResponseWriter, r *http.Request) {
 func browser(w http.ResponseWriter, r *http.Request) {
 	txn := newrelic.FromContext(r.Context())
 	hdr := txn.BrowserTimingHeader()
+
 	// BrowserTimingHeader() will always return a header whose methods can
 	// be safely called.
+
+	timey := strconv.FormatInt(time.Now().UnixMilli(), 10)
+
+	if strings.HasSuffix(timey, "3") {
+		http.Error(w, "Not good", 500)
+	}
+
 	if js := hdr.WithTags(); js != nil {
 		w.Write(js)
 	}
-	io.WriteString(w, "browser header page")
+	time.Sleep(100 * time.Millisecond)
+	io.WriteString(w, "browser header page "+timey)
 }
 
 func logTxnMessage(w http.ResponseWriter, r *http.Request) {
@@ -203,7 +216,7 @@ func main() {
 	app, err := newrelic.NewApplication(
 		newrelic.ConfigAppName("CLM Go Demo"),
 		newrelic.ConfigFromEnvironment(),
-		newrelic.ConfigDebugLogger(os.Stdout),
+		newrelic.ConfigInfoLogger(os.Stdout),
 		newrelic.ConfigAppLogForwardingEnabled(true),
 		newrelic.ConfigCodeLevelMetricsEnabled(true),
 	)
@@ -230,6 +243,8 @@ func main() {
 	http.HandleFunc(newrelic.WrapHandleFunc(app, "/async", async))
 	http.HandleFunc(newrelic.WrapHandleFunc(app, "/message", message))
 	http.HandleFunc(newrelic.WrapHandleFunc(app, "/log", logTxnMessage))
+	http.HandleFunc(newrelic.WrapHandleFunc(app, "/users", controller.GetAllUsers))
+	http.HandleFunc(newrelic.WrapHandleFunc(app, "/users/state", controller.CountUsersByState))
 
 	//loc := newrelic.ThisCodeLocation()
 	http.HandleFunc("/background", func(w http.ResponseWriter, req *http.Request) {

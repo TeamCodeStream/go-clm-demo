@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # start app
-nohup ./main > ./logs/app.log 2>&1 &
+nohup ./main &
 
 # generate load
 ./tester.sh

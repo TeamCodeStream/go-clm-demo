@@ -2,6 +2,7 @@ version: '3.9'
 
 services: 
   app:
+    restart: always
     build:
       context: .
     environment:
@@ -11,5 +12,3 @@ services:
       NEW_RELIC_HOST: ${NEW_RELIC_HOST:-}
     ports:
       - 127.0.0.1:9222:9222
-    volumes:
-      - "./logs:/app/logs"
