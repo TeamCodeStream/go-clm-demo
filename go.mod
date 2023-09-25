@@ -2,10 +2,14 @@ module server
 
 go 1.18
 
-require github.com/newrelic/go-agent/v3 v3.24.1
+require github.com/newrelic/go-agent/v3 v3.25.1
 
 require (
+	github.com/andybalholm/brotli v1.0.5 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
+	github.com/klauspost/compress v1.16.3 // indirect
+	github.com/valyala/bytebufferpool v1.0.0 // indirect
+	github.com/valyala/fasthttp v1.49.0 // indirect
 	golang.org/x/net v0.8.0 // indirect
 	golang.org/x/sys v0.6.0 // indirect
 	golang.org/x/text v0.8.0 // indirect
