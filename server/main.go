@@ -217,6 +217,7 @@ func main() {
 		newrelic.ConfigAppName("CLM Go Demo"),
 		newrelic.ConfigFromEnvironment(),
 		newrelic.ConfigInfoLogger(os.Stdout),
+		newrelic.ConfigDistributedTracerEnabled(true),
 		newrelic.ConfigAppLogForwardingEnabled(true),
 		newrelic.ConfigCodeLevelMetricsEnabled(true),
 	)
